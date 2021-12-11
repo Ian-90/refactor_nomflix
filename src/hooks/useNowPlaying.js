@@ -9,8 +9,8 @@ export const useNowPlaying = () => {
   const getNowPlaying = async () => {
     setIsLoading(true)
     try {
-      const { data } = await moviesApi.nowPlaying()
-      setNowPlaying(data)
+      const { data: { results } } = await moviesApi.nowPlaying()
+      setNowPlaying(results)
     } catch(error) {
       setError(error)
     } finally {

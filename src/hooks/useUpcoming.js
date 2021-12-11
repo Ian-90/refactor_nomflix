@@ -9,8 +9,8 @@ export const useUpcoming = () => {
   const getUpcoming = async () => {
     setIsLoading(true)
     try {
-      const { data } = await moviesApi.upcoming()
-      setUpcoming(data)
+      const { data: { results } } = await moviesApi.upcoming()
+      setUpcoming(results)
     } catch(error) {
       setError(error)
     } finally {

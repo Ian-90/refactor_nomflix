@@ -9,8 +9,8 @@ export const usePopular = () => {
   const getPopular = async () => {
     setIsLoading(true)
     try {
-      const { data } = await moviesApi.popular()
-      setPopular(data)
+      const { data: { results } } = await moviesApi.popular()
+      setPopular(results)
     } catch(error) {
       setError(error)
     } finally {

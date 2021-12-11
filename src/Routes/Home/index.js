@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { moviesApi } from 'api'
+import React from 'react'
 import styled from 'styled-components'
 import Section from 'Components/Section'
 import Loader from 'Components/Loader'
@@ -21,9 +20,6 @@ const Home = () => {
         <title>Movies | Nomflix</title>
       </Helmet>
       <Container>
-        <Helmet>
-          <title>Movies | Nomflix</title>
-        </Helmet>
         {isNowPlayLoading ? <Loader /> : <>
           {nowPlaying && nowPlaying.length > 0 && <Section title="Now Playing">
             {nowPlaying.map(movie => (
