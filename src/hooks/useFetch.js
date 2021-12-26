@@ -1,16 +1,15 @@
-import { moviesApi } from 'api'
 import { useState, useEffect } from 'react'
 
-export const useUpcoming = () => {
-  const [upcoming, setUpcoming] = useState(null)
+export const useFetch = (apiInstance) => {
   const [isLoading, setIsLoading] = useState(false)
+  const [data, setData] = useState(null)
   const [error, setError] = useState(null)
 
-  const getUpcoming = async () => {
+  const fetchApi = async () => {
     setIsLoading(true)
     try {
-      const { data: { results } } = await moviesApi.upcoming()
-      setUpcoming(results)
+      const { data: { results } } = await apiInstance()
+      setData(results)
     } catch(error) {
       setError(error)
     } finally {
@@ -19,12 +18,12 @@ export const useUpcoming = () => {
   }
 
   useEffect(() => {
-    getUpcoming()
+    fetchApi()
   }, [])
 
   return {
     isLoading,
-    upcoming,
+    data,
     error
   }
 }

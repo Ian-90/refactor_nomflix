@@ -5,14 +5,13 @@ import Loader from 'Components/Loader'
 import Message from 'Components/Message'
 import Poster from 'Components/Poster'
 import Helmet from 'react-helmet'
-import { useNowPlaying } from 'hooks/useNowPlaying'
-import { useUpcoming } from 'hooks/useUpcoming'
-import { usePopular } from 'hooks/usePopular'
+import { moviesApi } from 'api'
+import { useFetch } from 'hooks/useFetch'
 
 const Home = () => {
-  const { isLoading: isNowPlayLoading, nowPlaying, error: nowPlayingErr } = useNowPlaying()
-  const { isLoading: isUpcomingLoading, upcoming, error: upcomingErr } = useUpcoming()
-  const { isLoading: isPopularLoading, popular, error: popularErr } = usePopular()
+  const { isLoading: isNowPlayLoading, data: nowPlaying, error: nowPlayingErr } = useFetch(moviesApi.nowPlaying)
+  const { isLoading: isUpcomingLoading, data: upcoming, error: upcomingErr } = useFetch(moviesApi.upcoming)
+  const { isLoading: isPopularLoading, data: popular, error: popularErr } = useFetch(moviesApi.popular)
 
   return (
     <>
