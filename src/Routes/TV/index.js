@@ -5,18 +5,17 @@ import Loader from 'Components/Loader';
 import Message from 'Components/Message';
 import Poster from 'Components/Poster';
 import Helmet from 'react-helmet';
-import { useTopRated } from 'hooks/useTopRated';
-import { useAiringToday } from 'hooks/useAiringToday';
-import { useTVPopular } from 'hooks/useTVPopular';
+import { useFetch } from 'hooks/useFetch';
+import { tvApi } from 'api'
 
 const Container = styled.div`
   padding: 20px;
 `;
 
 const TV = () => {
-  const { isLoading: isTopRatedLoading, topRated, error: topRatedErr } = useTopRated()
-  const { isLoading: isTVPopularLoading, tvPopular, error: tvPopularErr } = useTVPopular()
-  const { isLoading: isAiringToday, airingToday, error: airingTodayErr } = useAiringToday()
+  const { isLoading: isTopRatedLoading, data: topRated, error: topRatedErr } = useFetch(tvApi.topRated)
+  const { isLoading: isTVPopularLoading, data: tvPopular, error: tvPopularErr } = useFetch(tvApi.popular)
+  const { isLoading: isAiringToday, data: airingToday, error: airingTodayErr } = useFetch(tvApi.airingToday)
 
   return (
     <>
