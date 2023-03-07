@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { moviesApi, tvApi } from 'api';
 import styled from 'styled-components';
-import Loader from 'Components/Loader';
-import Section from 'Components/Section';
-import Message from 'Components/Message';
-import Poster from 'Components/Poster';
+import Loader from 'components/Loader';
+import Section from 'components/Section';
+import Message from 'components/Message';
+import Poster from 'components/Poster';
 import Helmet from 'react-helmet';
 
 const Container = styled.div`

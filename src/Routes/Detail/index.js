@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { moviesApi, tvApi } from "../../api";
 import styled from 'styled-components';
-import Loader from 'Components/Loader';
+import Loader from 'components/Loader';
 import Helmet from 'react-helmet';
 
 const Container = styled.div`
