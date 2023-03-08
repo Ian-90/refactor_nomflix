@@ -23,7 +23,7 @@ const Home = () => {
     isLoading: isPopularLoading,
     data: popular,
     error: popularErr,
-  } = usePopularQuery()
+  } = usePopularQuery();
 
   return (
     <>
@@ -58,9 +58,9 @@ const Home = () => {
           <Loader />
         ) : (
           <>
-            {upcoming && upcoming.length > 0 && (
+            {upcoming && upcoming.results.length > 0 && (
               <Section title="Upcoming Playing">
-                {upcoming.map((movie) => (
+                {upcoming.results.map((movie) => (
                   <Poster
                     key={movie.id}
                     id={movie.id}
@@ -81,9 +81,9 @@ const Home = () => {
           <Loader />
         ) : (
           <>
-            {popular && popular.length > 0 && (
+            {popular && popular.results.length > 0 && (
               <Section title="Popular Movies">
-                {popular.map((movie) => (
+                {popular.results.map((movie) => (
                   <Poster
                     key={movie.id}
                     id={movie.id}
