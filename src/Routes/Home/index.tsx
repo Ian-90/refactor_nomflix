@@ -100,9 +100,15 @@ const Home = () => {
             )}
           </>
         )}
-        {nowPlayingErr && <Message color="#e74c3c" text={nowPlayingErr} />}
-        {upcomingErr && <Message color="#e74c3c" text={upcomingErr} />}
-        {popularErr && <Message color="#e74c3c" text={popularErr} />}
+        {nowPlayingErr && (
+          <Message color="#e74c3c" text={nowPlayingErr.status_message} />
+        )}
+        {upcomingErr && (
+          <Message color="#e74c3c" text={upcomingErr.status_message} />
+        )}
+        {popularErr && (
+          <Message color="#e74c3c" text={popularErr.status_message} />
+        )}
       </Container>
     </>
   );

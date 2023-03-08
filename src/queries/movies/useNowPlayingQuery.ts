@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { api } from "api";
+import { api, IApiError } from "api";
 import { IMovieListResponse } from "./types";
 
 const fetchNowPlaying = async () => {
@@ -8,7 +8,7 @@ const fetchNowPlaying = async () => {
 };
 
 export const useNowPlayingQuery = () =>
-  useQuery<IMovieListResponse>({
+  useQuery<IMovieListResponse, IApiError>({
     queryKey: ["nowPlaying"],
     queryFn: fetchNowPlaying,
   });

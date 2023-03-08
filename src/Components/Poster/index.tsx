@@ -3,7 +3,7 @@ import * as S from "./styled";
 
 interface IPosterProps {
   id: number;
-  imageUrl: string;
+  imageUrl: string | null;
   title: string;
   rating: number;
   year: string;

@@ -1,5 +1,10 @@
 import axios from "axios";
 
+export interface IApiError {
+  status_message: string
+  status_code: number
+}
+
 export const api = axios.create({
   baseURL: "https://api.themoviedb.org/3",
   params: {

@@ -1,4 +1,4 @@
-import { api } from "api";
+import { api, IApiError } from "api";
 import { useQuery } from "@tanstack/react-query";
 import { IMovieListResponse } from "./types";
 
@@ -8,7 +8,7 @@ const fetchPopular = async () => {
 };
 
 export const usePopularQuery = () =>
-  useQuery<IMovieListResponse>({
+  useQuery<IMovieListResponse, IApiError>({
     queryKey: ["popular"],
     queryFn: fetchPopular,
   });
