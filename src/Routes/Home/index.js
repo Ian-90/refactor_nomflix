@@ -4,10 +4,9 @@ import Loader from "components/Loader";
 import Message from "components/Message";
 import Poster from "components/Poster";
 import Helmet from "react-helmet";
-import { moviesApi } from "api";
-import { useFetch } from "hooks/useFetch";
 import { useNowPlayingQuery } from "queries/movies/useNowPlayingQuery";
 import { useUpcomingQuery } from "queries/movies/useUpcomingQuery";
+import { usePopularQuery } from "queries/movies/usePopularQuery";
 
 const Home = () => {
   const {
@@ -24,7 +23,7 @@ const Home = () => {
     isLoading: isPopularLoading,
     data: popular,
     error: popularErr,
-  } = useFetch(moviesApi.popular);
+  } = usePopularQuery()
 
   return (
     <>
