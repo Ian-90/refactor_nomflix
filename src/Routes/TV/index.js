@@ -7,6 +7,7 @@ import Helmet from "react-helmet";
 import { useFetch } from "hooks/useFetch";
 import { tvApi } from "api";
 import { useTopRatedQuery } from "queries/tv/useTopRatedQuery";
+import { usePopularQuery } from "queries/tv/usePopularQuery";
 
 const Container = styled.div`
   padding: 20px;
@@ -22,7 +23,7 @@ const TV = () => {
     isLoading: isTVPopularLoading,
     data: tvPopular,
     error: tvPopularErr,
-  } = useFetch(tvApi.popular);
+  } = usePopularQuery();
   const {
     isLoading: isAiringToday,
     data: airingToday,
@@ -61,9 +62,9 @@ const TV = () => {
           <Loader />
         ) : (
           <>
-            {tvPopular && tvPopular.length > 0 && (
+            {tvPopular && tvPopular.results.length > 0 && (
               <Section title="Popular Shows">
-                {tvPopular.map((show) => (
+                {tvPopular.results.map((show) => (
                   <Poster
                     key={show.id}
                     id={show.id}
