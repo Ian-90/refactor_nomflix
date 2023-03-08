@@ -4,10 +4,9 @@ import Loader from "components/Loader";
 import Message from "components/Message";
 import Poster from "components/Poster";
 import Helmet from "react-helmet";
-import { useFetch } from "hooks/useFetch";
-import { tvApi } from "api";
 import { useTopRatedQuery } from "queries/tv/useTopRatedQuery";
 import { usePopularQuery } from "queries/tv/usePopularQuery";
+import { useAiringTodayQuery } from "queries/tv/useAiringToday";
 
 const Container = styled.div`
   padding: 20px;
@@ -28,7 +27,7 @@ const TV = () => {
     isLoading: isAiringToday,
     data: airingToday,
     error: airingTodayErr,
-  } = useFetch(tvApi.airingToday);
+  } = useAiringTodayQuery();
 
   return (
     <>
@@ -84,9 +83,9 @@ const TV = () => {
           <Loader />
         ) : (
           <>
-            {airingToday && airingToday.length > 0 && (
+            {airingToday && airingToday.results.length > 0 && (
               <Section title="Airing Today">
-                {airingToday.map((show) => (
+                {airingToday.results.map((show) => (
                   <Poster
                     key={show.id}
                     id={show.id}
@@ -102,9 +101,15 @@ const TV = () => {
             )}
           </>
         )}
-        {topRatedErr && <Message color="#e74c3c" text={topRatedErr} />}
-        {airingTodayErr && <Message color="#e74c3c" text={airingTodayErr} />}
-        {tvPopularErr && <Message color="#e74c3c" text={tvPopularErr} />}
+        {topRatedErr && (
+          <Message color="#e74c3c" text={topRatedErr.status_message} />
+        )}
+        {airingTodayErr && (
+          <Message color="#e74c3c" text={airingTodayErr.status_message} />
+        )}
+        {tvPopularErr && (
+          <Message color="#e74c3c" text={tvPopularErr.status_message} />
+        )}
       </Container>
     </>
   );

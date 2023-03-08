@@ -7,7 +7,7 @@ interface IPosterProps {
   title: string;
   rating: number;
   year: string;
-  isMovie: boolean;
+  isMovie?: boolean;
 }
 
 const Poster = ({
