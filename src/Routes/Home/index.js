@@ -7,6 +7,7 @@ import Helmet from "react-helmet";
 import { moviesApi } from "api";
 import { useFetch } from "hooks/useFetch";
 import { useNowPlayingQuery } from "queries/movies/useNowPlayingQuery";
+import { useUpcomingQuery } from "queries/movies/useUpcomingQuery";
 
 const Home = () => {
   const {
@@ -18,7 +19,7 @@ const Home = () => {
     isLoading: isUpcomingLoading,
     data: upcoming,
     error: upcomingErr,
-  } = useFetch(moviesApi.upcoming);
+  } = useUpcomingQuery();
   const {
     isLoading: isPopularLoading,
     data: popular,
@@ -31,7 +32,6 @@ const Home = () => {
         <title>Movies | Nomflix</title>
       </Helmet>
       <Container>
-        {console.log('adf', nowPlaying)}
         {isNowPlayLoading ? (
           <Loader />
         ) : (

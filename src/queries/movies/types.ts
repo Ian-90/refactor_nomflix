@@ -15,7 +15,7 @@ interface IMovie {
   vote_average: number
 }
 
-export interface INowPlayingResponse {
+export interface IMovieListResponse {
   page: number
   results: IMovie[]
   dates: {

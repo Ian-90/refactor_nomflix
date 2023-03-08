@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "api";
-import { INowPlayingResponse } from "./types";
+import { IMovieListResponse } from "./types";
 
 const fetchNowPlaying = async () => {
-  const res = await api.get<INowPlayingResponse>("/movie/now_playing");
+  const res = await api.get<IMovieListResponse>("/movie/now_playing");
   return res.data;
 };
 
 export const useNowPlayingQuery = () =>
-  useQuery<INowPlayingResponse>({
+  useQuery<IMovieListResponse>({
     queryKey: ["nowPlaying"],
     queryFn: fetchNowPlaying,
   });
