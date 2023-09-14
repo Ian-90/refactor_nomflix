@@ -14,7 +14,7 @@ export const api = axios.create({
 });
 
 export const moviesApi = {
-  movieDetail: (id: string) =>
+  movieDetail: (id: number) =>
     api.get(`movie/${id}`, {
       params: {
         append_to_response: "videos",
@@ -30,7 +30,7 @@ export const moviesApi = {
 
 export const tvApi = {
   airingToday: () => api.get("tv/airing_today"),
-  showDetail: (id: string) =>
+  showDetail: (id: number) =>
     api.get(`tv/${id}`, {
       params: {
         append_to_response: "videos",
